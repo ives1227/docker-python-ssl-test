@@ -1,0 +1,27 @@
+# Build all images and run all containers
+# `docker-compose -f docker-compose-local.yml up -d --build --force-recreate`
+
+
+version: '3.7'
+
+services:
+
+  nginx-proxy:
+    container_name: nginx-proxy
+    build:
+      context: ./nginx
+      dockerfile: DockerfileNginx
+    tty: true
+    ports:
+    #  - '23002:5000'
+      - '80:80'
+      - '443:443'
+      
+  #iiif-delivery:
+  #  container_name: iiif-delivery
+  #  build:
+  #    context: ./delivery
+  #    dockerfile: DockerfileDelivery
+  #  tty: true
+  #  ports:
+  #    - '23002:5000'
